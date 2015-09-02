@@ -1,0 +1,20 @@
+{
+  "name": "node-webkit-whois",
+  "version": "1.0.0",
+  "description": "Project to help find emails of registars",
+  "main": "index.html",
+  "author": "Adam Karbiener",
+  "window": {
+    "toolbar": true,
+    "width": 800,
+    "height": 800
+  },
+  "license": "GPL-3.0",
+  "dependencies": {
+    "node-whois": "^2.1.2"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-shell": "^0.4.3"
+  }
+}
