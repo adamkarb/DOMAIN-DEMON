@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>DOMAIN DEMON</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="./app.css" />
+    <script>
+
+        var nw = require('nw.gui');
+        var win = nw.Window.get();
+
+    </script>
+
+</head>
+<body>
+
+<div class="container-fluid">
+
+    <form id="form">
+        <div class="form-group">
+            <label class="title">Search some domains</label>
+            <input id="domain" class="form-control input" type="text"/>
+        </div>
+        <button class="btn btn-default">RUN THE DEMON</button>
+    </form>
+
+    <div id="results"></div>
+
+</div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="./app.js"></script>
+
+</body>
+</html>
