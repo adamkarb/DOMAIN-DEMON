@@ -1,3 +1,33 @@
 * {
     outline: none !important;
 }
+
+.body-font {
+    font-family: 'Open Sans';
+}
+
+body {
+    background-color: #fff;
+}
+
+.title {
+    font-family: 'Annie use your telescope';
+    font-size: 3em;
+}
+
+
+button {
+    font-family: 'Annie use your telescope';
+    font-size: 2em;
+}
+
+#results {
+    margin-top: 10px;
+    padding: 1em;
+    line-height: 1.5em;
+    height: 600px;
+    width: 100%;
+    border: 1px solid gray;
+    border-radius: 3px;
+    overflow-y: auto;
+}

@@ -2,6 +2,7 @@
 
 var whois = require('node-whois');
 var fs = require('fs');
+var jade = require('jade');
 
 $(document).ready(function() {
 
@@ -10,7 +11,13 @@ $(document).ready(function() {
     var urlLength = urls.length;
     var urlCount = 0;
 
+    $('#results').hide();
+    $('.loading').hide();
+
     $('#form').on('submit', function(event) {
+
+        $('#results').hide();
+        $('.loading').show();
 
        event.preventDefault();
 
@@ -23,10 +30,22 @@ $(document).ready(function() {
                 return console.log(err);
             }
 
-            data = data.toString().replace( /\r\n/g, '<br>');
-            console.log(data);
+            var mikesizz = objectify(data);
 
-            $('#results').html(data);
+            console.log('mikesizz', mikesizz);
+
+            var fn = jade.compileFile('./template.jade');
+
+            var newHtml = fn(mikesizz);
+
+            $('.loading').hide();
+
+            $('#results').show().html(newHtml);
+
+
+            //console.log('output', output);
+
+
 
         });
 
@@ -56,5 +75,35 @@ $(document).ready(function() {
             //urlCount++;
 
         //});
+    }
+
+    function objectify (input) {
+
+        input.replace( /\r\n/g, '\n');
+
+        var newArray = input.split('\n');
+
+        var obj = {};
+
+        newArray.forEach(function(item) {
+
+            if ( item.indexOf(': ') !== -1 ) {
+
+                var mike = item.split(": ");
+
+                mike[0] = mike[0].replace(/\s+/g, '_').toLowerCase();
+                mike[1] = mike[1].trim();
+
+                obj[mike[0]] = mike[1];
+
+                if (mike[0] === 'NameServer') {
+                    var breakOut = true;
+                }
+            }
+
+        });
+
+        return obj;
+
     }
 });

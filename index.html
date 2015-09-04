@@ -7,11 +7,21 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" />
+    <link href='https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope|Open+Sans:400,600,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="./app.css" />
     <script>
 
-        var nw = require('nw.gui');
-        var win = nw.Window.get();
+//        var nw = require('nw.gui');
+//        var win = nw.Window.get();
+
+        var gui = require('nw.gui');
+        if (process.platform === "darwin") {
+            var mb = new gui.Menu({type: 'menubar'});
+            mb.createMacBuiltin('DOMAIN DEMON', {
+                hideEdit: false,
+            });
+            gui.Window.get().menu = mb;
+}
 
     </script>
 
@@ -23,12 +33,15 @@
     <form id="form">
         <div class="form-group">
             <label class="title">Search some domains</label>
-            <input id="domain" class="form-control input" type="text"/>
+            <input id="domain" class="form-control input body-font" type="text"/>
         </div>
         <button class="btn btn-default">RUN THE DEMON</button>
     </form>
 
-    <div id="results"></div>
+    <div class="img-wrap">
+        <img class="loading" src="https://upload.wikimedia.org/wikipedia/commons/2/22/Animated_fire_by_nevit.gif" alt="Loading..."/>
+    </div>
+    <div class="body-font" id="results"></div>
 
 </div>
 

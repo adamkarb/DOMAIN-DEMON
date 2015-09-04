@@ -7,11 +7,12 @@
   "window": {
     "frame": true,
     "toolbar": true,
-    "width": 500,
-    "height": 500
+    "width": 600,
+    "height": 800
   },
   "license": "GPL-3.0",
   "dependencies": {
+    "jade": "^1.11.0",
     "node-whois": "^2.1.2"
   },
   "devDependencies": {
