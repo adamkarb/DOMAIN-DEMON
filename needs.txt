@@ -1,6 +1,0 @@
-domain_name
-registrant_name
-registrant_email
-registrant_phone
-registrant_phone_ext
-registrant_street

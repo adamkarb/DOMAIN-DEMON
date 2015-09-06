@@ -46,16 +46,17 @@ $(document).ready(function () {
             // fn -> function used to render template
             var fn = jade.compileFile('./template.jade');
 
-            // newHtml -> html compiled and returned
+            // newHtml -> html compiled and returned from fn
             var newHtml = fn(superObj);
 
+            // Hide loading marker
             $('.loading').hide();
 
+            // display results
             $('#results').show().html(newHtml);
 
-
-            //console.log('output', output);
-
+            // Reset the search field
+            $('#domain').val('');
 
         });
 
