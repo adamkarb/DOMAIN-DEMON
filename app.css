@@ -42,9 +42,8 @@ button {
     overflow-y: auto;
 }
 
-.domain {
-    font-weight: 300;
-    font-size: 1.4em;
+#domain {
+    height: 2em;
 }
 
 ul {
