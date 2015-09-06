@@ -1,5 +1,19 @@
 ul
-    li Domain Name: #{domain_name}
-    li Registrant Name: #{registrant_name}
-    li Registrant Phone: #{registrant_phone}
-    li Registrant Street: #{registrant_street}
+    if iterator.domain_name
+        li(class="domain") Results for #{iterator.domain_name}
+    if iterator.registrant_name
+        li Registrant Name:
+            span(class="values") &nbsp; #{iterator.registrant_name}
+    if iterator.registrant_email
+        li Registrant Email:
+            span(class="values") &nbsp;
+                a(href="mailto:" + iterator.registrant_email) #{iterator.registrant_email}
+    if iterator.registrant_phone
+        li Registrant Phone:
+            span(class="values") &nbsp; #{iterator.registrant_phone}
+    if iterator.registrant_city
+        li Registrant City:
+            span(class="values") &nbsp; #{iterator.registrant_city}
+    if iterator.registrant_street
+        li Registrant Street:
+            span(class="values") &nbsp; #{iterator.registrant_street}

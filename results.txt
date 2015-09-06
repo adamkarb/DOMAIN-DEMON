@@ -56,7 +56,7 @@ Name Server: NS1.ASMALLORANGE.COM
 Name Server: NS2.ASMALLORANGE.COM
 DNSSEC: unsigned
 URL of the ICANN WHOIS Data Problem Reporting System: http://wdprs.internic.net/
->>> Last update of WHOIS database: 2015-09-04T17:00:00Z <<<
+>>> Last update of WHOIS database: 2015-09-06T05:00:00Z <<<
 
 For more information on Whois status codes, please visit https://www.icann.org/resources/pages/epp-status-codes-2014-06-16-en
 

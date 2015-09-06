@@ -4,30 +4,77 @@
 
 .body-font {
     font-family: 'Open Sans';
+    font-weight: 300;
+    font-size: 1.2em;
 }
 
 body {
     background-color: #fff;
 }
 
+.input {
+    font-size: 1.4em;
+    font-weight: 200;
+}
+
 .title {
-    font-family: 'Annie use your telescope';
+    color: rgb(22,155,255);
+    font-family: Helvetica Neue;
+    font-weight: 100;
     font-size: 3em;
 }
 
 
 button {
-    font-family: 'Annie use your telescope';
+    font-family: Helvetica Neue !important;
+    font-weight: 200 !important;
     font-size: 2em;
 }
 
 #results {
     margin-top: 10px;
     padding: 1em;
-    line-height: 1.5em;
-    height: 600px;
+    line-height: 2em;
+    max-height: 600px;
     width: 100%;
-    border: 1px solid gray;
+    border: 1px solid #d0d0d0;
     border-radius: 3px;
     overflow-y: auto;
+}
+
+.domain {
+    font-weight: 400;
+    font-size: 1.3em;
+}
+
+ul {
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+li {
+    list-style: none;
+}
+
+.values {
+    color: rgb(22,155,255);
+}
+
+a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+a:visited {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+.loading {
+    color: #999;
+    font-family: 'Open Sans';
+    font-weight: 300;
+    text-align: center;
+    font-size: 2em;
+    margin-top: 20vh;
 }

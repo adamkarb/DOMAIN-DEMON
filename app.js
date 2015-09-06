@@ -4,7 +4,7 @@ var whois = require('node-whois');
 var fs = require('fs');
 var jade = require('jade');
 
-$(document).ready(function() {
+$(document).ready(function () {
 
     var emailOutput = [];
     var urls = [];
@@ -14,29 +14,40 @@ $(document).ready(function() {
     $('#results').hide();
     $('.loading').hide();
 
-    $('#form').on('submit', function(event) {
+    $('#form').on('submit', function (event) {
 
         $('#results').hide();
         $('.loading').show();
 
-       event.preventDefault();
+        event.preventDefault();
 
         var domain = $('#domain').val();
 
-        search(domain, function(error, data) {
+        // regex the crap out of this url
+        domain = trimDomain(domain);
 
-            //console.log('data', data);
-            if (error){
-                return console.log(err);
+        search(domain, function (error, data) {
+
+            console.log('error', error);
+            if (error) {
+                $('.loading').hide();
+                return $('#results').show().html(error);
             }
 
             var mikesizz = objectify(data);
 
             console.log('mikesizz', mikesizz);
 
+            // Do this to allow iteration in jade over this key
+            var superObj = {
+                iterator: mikesizz
+            };
+
+            // fn -> function used to render template
             var fn = jade.compileFile('./template.jade');
 
-            var newHtml = fn(mikesizz);
+            // newHtml -> html compiled and returned
+            var newHtml = fn(superObj);
 
             $('.loading').hide();
 
@@ -46,48 +57,54 @@ $(document).ready(function() {
             //console.log('output', output);
 
 
-
         });
 
     });
 
 
-    function search( urls , callback ) {
+    function search(urls, callback) {
 
         //urls.forEach(function(link) {
 
-            whois.lookup(urls, function(err, data) {
+        whois.lookup(urls, function (err, data) {
 
+            if (err) {
+                console.log('err', err);
+            }
 
-                fs.writeFile('results.txt', data, function() {
-                    console.log("Written");
-                });
-
-                callback(null, data);
-
-
-                //if (urlCount === urlLength) {
-                //    console.log(emailOutput);
-                //}
-
+            fs.writeFile('results.txt', data, function () {
+                console.log("Written");
             });
 
-            //urlCount++;
+            if ((data.indexOf('ERROR') !== -1) || (data.indexOf('No match') !== -1)) {
+                return callback('No results found...', null);
+            }
+
+            callback(null, data);
+
+
+            //if (urlCount === urlLength) {
+            //    console.log(emailOutput);
+            //}
+
+        });
+
+        //urlCount++;
 
         //});
     }
 
-    function objectify (input) {
+    function objectify(input) {
 
-        input.replace( /\r\n/g, '\n');
+        input.replace(/\r\n/g, '\n');
 
         var newArray = input.split('\n');
 
         var obj = {};
 
-        newArray.forEach(function(item) {
+        newArray.forEach(function (item) {
 
-            if ( item.indexOf(': ') !== -1 ) {
+            if (item.indexOf(': ') !== -1) {
 
                 var mike = item.split(": ");
 
@@ -106,4 +123,17 @@ $(document).ready(function() {
         return obj;
 
     }
+
+    function trimDomain(domain) {
+
+        // remove any common website prefix
+        domain = domain.replace(/^(?:http(?:s)?:\/\/)?(?:www(?:[0-9]+)?\.)?/gi, '');
+
+        // remove anything after trailing slash, including slash
+        domain = domain.replace(/\/.*$/, '');
+
+        return domain;
+
+    }
+
 });
