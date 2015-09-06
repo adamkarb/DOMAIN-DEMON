@@ -70,11 +70,25 @@ a:visited {
     text-decoration: none !important;
 }
 
+@-webkit-keyframes load {
+    from {
+        color: #d7d7d7;
+    }
+    to {
+        color: rgb(22,155,255);
+    }
+}
+
 .loading {
     color: #999;
-    font-family: 'Open Sans';
+    font-family: "Open Sans";
     font-weight: 300;
     text-align: center;
-    font-size: 2em;
+    font-size: 2.5em;
     margin-top: 20vh;
+    -webkit-animation: load .6s infinite alternate ease-in-out;
 }
+
+
+
+

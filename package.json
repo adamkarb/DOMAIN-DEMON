@@ -10,6 +10,7 @@
     "width": 600,
     "height": 600
   },
+  "chromium-args": "--enable-experimental-web-platform-features --enable-threaded-compositing",
   "license": "GPL-3.0",
   "dependencies": {
     "jade": "^1.11.0",
