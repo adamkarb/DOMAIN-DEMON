@@ -51,12 +51,17 @@ ul {
     margin-bottom: 0;
 }
 
+.result-header {
+    font-size: 1.4em;
+}
+
 li {
     list-style: none;
 }
 
 .values {
     color: rgb(22,155,255);
+    font-size: 1.1em;
 }
 
 a {

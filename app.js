@@ -28,7 +28,6 @@ $(document).ready(function () {
 
         search(domain, function (error, data) {
 
-            console.log('error', error);
             if (error) {
                 $('.loading').hide();
                 return $('#results').show().html(error);
@@ -36,7 +35,6 @@ $(document).ready(function () {
 
             var mikesizz = objectify(data);
 
-            console.log('mikesizz', mikesizz);
 
             // Do this to allow iteration in jade over this key
             var superObj = {
@@ -70,7 +68,7 @@ $(document).ready(function () {
         whois.lookup(urls, function (err, data) {
 
             if (err) {
-                console.log('err', err);
+                return console.log('err', err);
             }
 
             fs.writeFile('results.txt', data, function () {

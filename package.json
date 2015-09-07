@@ -1,16 +1,17 @@
 {
   "name": "node-webkit-whois",
-  "version": "1.0.0",
-  "description": "Project to help find emails of registars",
+  "version": "0.1.0",
+  "description": "Project to help find emails of companies",
   "main": "index.html",
   "author": "Adam Karbiener",
   "window": {
     "frame": true,
     "toolbar": true,
     "width": 600,
-    "height": 600
+    "height": 600,
+    "max_width": 600,
+    "max_height": 600
   },
-  "chromium-args": "--enable-experimental-web-platform-features --enable-threaded-compositing",
   "license": "GPL-3.0",
   "dependencies": {
     "jade": "^1.11.0",
